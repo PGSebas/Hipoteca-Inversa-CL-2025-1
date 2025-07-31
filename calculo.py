@@ -23,4 +23,16 @@ def calcular_intereses(tasa_efectiva_anual, pago_mensual):
     return None
 
 def probar_porcentaje_financiado():
-    return None
+    #Entradas
+    edad = 68
+    
+    #Proceso de prueba
+    resultado_funcion_porcentaje_financiado = calcular_porcentaje_financiado(edad)
+    
+    #Verificacion
+    resultado_esperado_porcentaje_financiado = 30
+    if resultado_funcion_porcentaje_financiado == resultado_esperado_porcentaje_financiado:
+        print("resultado correcto")
+    else:
+        print("Resultado incorrecto")
+    
