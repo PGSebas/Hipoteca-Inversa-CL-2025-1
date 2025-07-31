@@ -1,6 +1,14 @@
 
 def calcular_porcentaje_financiado(edad):
-    return None
+    if edad >= 65 and edad <70:
+        return 30
+    if edad >= 70 and edad <80:
+        return 40
+    if edad >= 80 and edad <85:
+        return 55
+    if edad >= 85:
+        return 70
+    return "Edad Incorrecta"
 
 def calcular_plazo_financiacion(edad):
     return None
