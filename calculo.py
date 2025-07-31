@@ -1,5 +1,6 @@
 
 def calcular_porcentaje_financiado(edad):
+    #Calcula el porcentaje a financiar del total de la vivienda en funcion de la edad del interesado
     if edad >= 65 and edad <70:
         return 30
     if edad >= 70 and edad <80:
@@ -35,4 +36,5 @@ def probar_porcentaje_financiado():
         print("resultado correcto")
     else:
         print("Resultado incorrecto")
-    
+
+probar_porcentaje_financiado()
