@@ -34,34 +34,3 @@ def calcular_valor_financiado(porcentaje_financiado, valor_vivienda):
 def calcular_intereses(tasa_efectiva_anual, pago_mensual):
     return None
 
-def probar_porcentaje_financiado():
-    #Entradas
-    edad = 68
-    
-    #Proceso de prueba
-    resultado_funcion_porcentaje_financiado = calcular_porcentaje_financiado(edad)
-    
-    #Verificacion
-    resultado_esperado_porcentaje_financiado = 30
-    if resultado_funcion_porcentaje_financiado == resultado_esperado_porcentaje_financiado:
-        print("resultado correcto")
-    else:
-        print("Resultado incorrecto")
-
-probar_porcentaje_financiado()
-
-def probar_plazo_financiacion(): 
-    #entradas 
-
-    edad = 68
-
-    # proceso de prueba 
-    resultado_funcion_plazo_financiado = calcular_plazo_financiacion()
-    #verificacion 
-    resultado_esperado_plazo_financiado = 20  
-    if resultado_esperado_plazo_financiado == resultado_funcion_plazo_financiado:
-        print("resultado correcto")
-    else:
-        print("Resultado incorrecto")
-
-probar_plazo_financiacion()
