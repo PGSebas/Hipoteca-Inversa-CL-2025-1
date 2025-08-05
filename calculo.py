@@ -26,7 +26,8 @@ def calcular_plazo_financiacion(edad):
         return 3
 
 def calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo):
-    return None
+    pago = (valor_vivienda * porcentaje_financiado / 100) / (plazo * 12)
+    return pago
 
 def calcular_valor_financiado(porcentaje_financiado, valor_vivienda):
     return None
