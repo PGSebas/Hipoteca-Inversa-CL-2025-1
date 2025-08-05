@@ -56,10 +56,12 @@ def probar_plazo_financiacion():
     edad = 68
 
     # proceso de prueba 
-    resultado_funcion_plazo_financiado = calcular_plazo_financiacion
+    resultado_funcion_plazo_financiado = calcular_plazo_financiacion()
     #verificacion 
     resultado_esperado_plazo_financiado = 20  
-    if resultado_esperado_plazo_financiado == resultado_esperado_porcentaje_financiado:
+    if resultado_esperado_plazo_financiado == resultado_funcion_plazo_financiado:
         print("resultado correcto")
     else:
         print("Resultado incorrecto")
+
+probar_plazo_financiacion()
