@@ -11,8 +11,19 @@ def calcular_porcentaje_financiado(edad):
         return 70
     return "Edad Incorrecta"
 
+
 def calcular_plazo_financiacion(edad):
-    return None
+    #Calcula el plazo en el que el banco pagara las cuotas al usuario funcion de la edad del interesado
+    if edad >= 65 and edad <70:
+        return 20 
+    if edad >= 70 and edad <75:
+        return 15
+    if edad >= 75 and edad <80:
+        return 10
+    if edad >= 80 and edad <85:
+        return 5
+    if edad >= 85:
+        return 3
 
 def calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo):
     return None
@@ -38,3 +49,17 @@ def probar_porcentaje_financiado():
         print("Resultado incorrecto")
 
 probar_porcentaje_financiado()
+
+def probar_plazo_financiacion(): 
+    #entradas 
+
+    edad = 68
+
+    # proceso de prueba 
+    resultado_funcion_plazo_financiado = calcular_plazo_financiacion
+    #verificacion 
+    resultado_esperado_plazo_financiado = 20  
+    if resultado_esperado_plazo_financiado == resultado_esperado_porcentaje_financiado:
+        print("resultado correcto")
+    else:
+        print("Resultado incorrecto")
