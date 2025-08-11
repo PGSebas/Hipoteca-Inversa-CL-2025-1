@@ -176,6 +176,11 @@ class TestHipotecaInversa(unittest.TestCase):
             _ = calcular_porcentaje_financiado(edad)
 
     def test_error_edad_negativa(self):
+        # Entrada
+        edad = -70
+        # Cálculo + Verificación
+        with self.assertRaises(ValueError):
+            _ = calcular_porcentaje_financiado(edad)
 
 if __name__ == "__main__":
     unittest.main()
