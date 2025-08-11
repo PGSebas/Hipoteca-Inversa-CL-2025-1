@@ -1,3 +1,6 @@
+#Constantes
+TASA_EFECTIVA_ANUAL = 0.2478 # Esta expresando en decimal (24.78 %)
+TASA_EFECTIVA_MENSUAL = ((1+TASA_EFECTIVA_ANUAL)**(1/12))-1 # Resultado expresado en decimmal
 
 def calcular_porcentaje_financiado(edad):
     #Calcula el porcentaje a financiar del total de la vivienda en funcion de la edad del interesado
@@ -26,6 +29,7 @@ def calcular_plazo_financiacion(edad):
         return 3
 
 def calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo):
+    #Calcula el valor que el banco pagará mensualmente el usuario
     pago = (valor_vivienda * porcentaje_financiado / 100) / (plazo * 12)
     return pago
 
