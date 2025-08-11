@@ -143,7 +143,16 @@ class TestHipotecaInversa(unittest.TestCase):
         resultado = calcular_plazo_financiacion(edad)
         # Verificación
         self.assertEqual(resultado, 3)
-
+        
+    def test_caso_4_pago_mensual(self):
+        # Entrada
+        porcentaje_financiado = 70
+        valor_vivienda = 10_000_000.0
+        plazo = 3
+        # Cálculo
+        resultado = calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo)
+        # Verificación
+        self.assertAlmostEqual(resultado, 194444.44444444444, places=6)
 
 
 if __name__ == "__main__":
