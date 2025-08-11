@@ -38,6 +38,5 @@ def calcular_valor_financiado(porcentaje_financiado, valor_vivienda):
     valor_financiado = (porcentaje_financiado/100) * valor_vivienda
     return valor_financiado
 
-def calcular_intereses(tasa_efectiva_anual, pago_mensual):
-    return None
-
+def calcular_intereses():
+    pass
