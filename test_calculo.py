@@ -136,6 +136,14 @@ class TestHipotecaInversa(unittest.TestCase):
         # Verificación
         self.assertEqual(resultado, 70)
 
+    def test_caso_4_plazo(self):
+        # Entrada
+        edad = 95.0
+        # Cálculo
+        resultado = calcular_plazo_financiacion(edad)
+        # Verificación
+        self.assertEqual(resultado, 3)
+
 
 
 if __name__ == "__main__":
