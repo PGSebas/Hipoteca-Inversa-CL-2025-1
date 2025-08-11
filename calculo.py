@@ -38,5 +38,14 @@ def calcular_valor_financiado(porcentaje_financiado, valor_vivienda):
     valor_financiado = (porcentaje_financiado/100) * valor_vivienda
     return valor_financiado
 
-def calcular_intereses():
-    pass
+def calcular_intereses(pago_mensual, tasa_mensual, numero_cuotas, saldo_inicial=0.0):
+    #Calcula el interés total y el saldo final con dicho interes
+    
+    saldo = float(saldo_inicial)
+    for _ in range(numero_cuotas):
+        interes_mes = saldo * tasa_mensual
+        saldo += interes_mes + pago_mensual
+
+    interes_siguiente = saldo * tasa_mensual
+    saldo_final = saldo + interes_siguiente
+    return interes_siguiente, saldo_final
