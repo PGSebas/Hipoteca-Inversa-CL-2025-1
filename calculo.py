@@ -16,7 +16,7 @@ def calcular_porcentaje_financiado(edad):
 
 
 def calcular_plazo_financiacion(edad):
-    #Calcula el plazo en el que el banco pagara las cuotas al usuario funcion de la edad del interesado
+    #Calcula el plazo en años en el que el banco pagara las cuotas al usuario funcion de la edad del interesado
     if edad >= 65 and edad <70:
         return 20 
     if edad >= 70 and edad <75:
@@ -34,7 +34,9 @@ def calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo):
     return pago
 
 def calcular_valor_financiado(porcentaje_financiado, valor_vivienda):
-    return None
+    #Calcula el valor de la hipoteca respecto al porcentaje fianciado
+    valor_financiado = (porcentaje_financiado/100) * valor_vivienda
+    return valor_financiado
 
 def calcular_intereses(tasa_efectiva_anual, pago_mensual):
     return None
