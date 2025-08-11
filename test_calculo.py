@@ -84,6 +84,17 @@ class TestHipotecaInversa(unittest.TestCase):
         # Verificación
         self.assertAlmostEqual(intereses, 23716044.688623436, places=2)
 
+    # =========================
+    # CASO 3
+    # =========================
+    def test_caso_3_porcentaje(self):
+        # Entrada
+        edad = 80.0
+        # Cálculo
+        resultado = calcular_porcentaje_financiado(edad)
+        # Verificación
+        self.assertEqual(resultado, 55)
+
 
 
 if __name__ == "__main__":
