@@ -1,0 +1,32 @@
+# Entorno virtual de Poetry
+.venv/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Configuración de VSCode
+.vscode/
+.history/
+
+# Archivos de sistema de Windows
+Desktop.ini
+
+# Archivos de pruebas
+.pytest_cache/
+.coverage
+htmlcov/
