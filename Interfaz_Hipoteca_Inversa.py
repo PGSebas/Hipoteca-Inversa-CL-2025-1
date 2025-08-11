@@ -1,9 +1,33 @@
-import calculo 
+from calculo import *
 
-#leer entradas 
+def main():
+    print("=== Calculadora Hipoteca Inversa ===")
 
-Valor_vivienda = int(input("Ingrese el valor de la vivienda: "))
-Edad = int("Ingrese su edad: ")
+    try:
+        # Entradas
+        edad = float(input("Ingrese la edad: "))
+        valor_vivienda = float(input("Ingrese el valor de la vivienda: "))
 
-#Realizar el proceso
+        # Cálculos
+        porcentaje_financiado = calcular_porcentaje_financiado(edad)
+        plazo_anios = calcular_plazo_financiacion(edad)
+        pago_mensual = calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo_anios)
+        intereses_totales, saldo_final = calcular_intereses(
+            pago_mensual,
+            TASA_EFECTIVA_MENSUAL,
+            plazo_anios * 12
+        )
 
+        # Salidas
+        print("\n--- Resultados ---")
+        print(f"Porcentaje financiado: {porcentaje_financiado}%")
+        print(f"Plazo en años: {plazo_anios}")
+        print(f"Pago mensual: ${pago_mensual:,.2f}")
+        print(f"Intereses Totales: ${intereses_totales:,.2f}")
+        print(f"Saldo Final: ${saldo_final:,.2f}")
+
+    except ValueError as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    main()
