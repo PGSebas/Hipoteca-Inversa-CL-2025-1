@@ -4,15 +4,18 @@ TASA_EFECTIVA_MENSUAL = ((1+TASA_EFECTIVA_ANUAL)**(1/12))-1 # Resultado expresad
 
 def calcular_porcentaje_financiado(edad):
     #Calcula el porcentaje a financiar del total de la vivienda en funcion de la edad del interesado
-    if edad >= 65 and edad <70:
+    if edad < 0:
+        raise ValueError("La edad no puede ser negativa")
+    if edad < 65:
+        raise ValueError("La edad debe ser mayor o igual a 65 años")
+    if edad >= 65 and edad < 70:
         return 30
-    if edad >= 70 and edad <80:
+    if edad >= 70 and edad < 80:
         return 40
-    if edad >= 80 and edad <85:
+    if edad >= 80 and edad < 85:
         return 55
     if edad >= 85:
         return 70
-    return "Edad Incorrecta"
 
 
 def calcular_plazo_financiacion(edad):
@@ -29,9 +32,14 @@ def calcular_plazo_financiacion(edad):
         return 3
 
 def calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo):
-    #Calcula el valor que el banco pagará mensualmente el usuario
-    pago = (valor_vivienda * porcentaje_financiado / 100) / (plazo * 12)
-    return pago
+    #Calcula el plazo en el que el banco pagara las cuotas al usuario funcion de la edad del interesado
+    if valor_vivienda < 0:
+        raise ValueError("El valor de la vivienda no puede ser negativo")
+    if valor_vivienda == 0:
+        raise ValueError("El valor de la vivienda no puede ser cero")
+    if porcentaje_financiado <= 0:
+        raise ValueError("El porcentaje financiado debe ser mayor que cero")
+    return (valor_vivienda * porcentaje_financiado / 100) / (plazo * 12)
 
 def calcular_valor_financiado(porcentaje_financiado, valor_vivienda):
     #Calcula el valor de la hipoteca respecto al porcentaje fianciado
