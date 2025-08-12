@@ -232,6 +232,16 @@ class TestHipotecaInversa(unittest.TestCase):
         # Cálculo + Verificación
         with self.assertRaises(ValueError):
             _ = calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo)
-            
+
+    def test_error_valor_vivienda_negativo(self):
+        # Entrada
+        porcentaje_financiado = 70
+        valor_vivienda = -80_000_000
+        plazo = 3
+        # Cálculo + Verificación
+        with self.assertRaises(ValueError):
+            _ = calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo)
+
+
 if __name__ == "__main__":
     unittest.main()
