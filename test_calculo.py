@@ -224,6 +224,14 @@ class TestHipotecaInversa(unittest.TestCase):
         # Cálculo + Verificación
         with self.assertRaises(ValueError):
             _ = calcular_porcentaje_financiado(edad)
-
+    def test_error_valor_vivienda_cero(self):
+        # Entrada
+        porcentaje_financiado = 55
+        valor_vivienda = 0
+        plazo = 5
+        # Cálculo + Verificación
+        with self.assertRaises(ValueError):
+            _ = calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo)
+            
 if __name__ == "__main__":
     unittest.main()
