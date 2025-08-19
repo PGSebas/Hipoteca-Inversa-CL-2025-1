@@ -14,7 +14,7 @@ def calcular_porcentaje_financiado(edad):
         return 40
     if edad >= 80 and edad < 85:
         return 55
-    if edad >= 85:
+    if edad >= 85 and edad <115:
         return 70
 
 
@@ -28,7 +28,7 @@ def calcular_plazo_financiacion(edad):
         return 10
     if edad >= 80 and edad <85:
         return 5
-    if edad >= 85:
+    if edad >= 85 and edad <115:
         return 3
 
 def calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo):
