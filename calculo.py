@@ -16,7 +16,8 @@ def calcular_porcentaje_financiado(edad):
         return 55
     if edad >= 85 and edad <115:
         return 70
-
+    if edad >= 115:
+        raise ValueError("La edad debe ser menor a 115 años")
 
 def calcular_plazo_financiacion(edad):
     #Calcula el plazo en años en el que el banco pagara las cuotas al usuario funcion de la edad del interesado
