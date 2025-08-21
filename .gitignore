@@ -20,7 +20,6 @@ Thumbs.db
 *.log
 
 # Configuración de VSCode
-.vscode/
 .history/
 
 # Archivos de sistema de Windows
