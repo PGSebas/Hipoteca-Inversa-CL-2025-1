@@ -22,10 +22,10 @@ Para realizar el calculo se considerará:
 
 | Edad              | Porcentaje del valor de la vivienda |
 |-------------------|-------------------------------------|
-| 65 – 70 años      |             25% – 30%               |
-| 70 – 80 años      |             35% – 50%               |
-| 80 – 85 años      |             50% – 65%               |
-| Más de 85 años    |             60% – 75%               |
+| 65 – 70 años      |             30%               |
+| 70 – 80 años      |             40%               |
+| 80 – 85 años      |             55%               |
+| Más de 85 años    |             70%               |
 
 ### Formulas Aplicadas 
 
