@@ -1,13 +1,38 @@
+import sys 
+sys.path.append("src")
+
+import excepciones
+
 #Constantes
 TASA_EFECTIVA_ANUAL = 0.2478 # Esta expresando en decimal (24.78 %)
 TASA_EFECTIVA_MENSUAL = ((1+TASA_EFECTIVA_ANUAL)**(1/12))-1 # Resultado expresado en decimmal
 
+def verificar_edad(edad: int):
+    """
+    Arroja la excepcion correspondiente al tipo de error por edad
+
+    """
+    if edad == 0:
+        raise excepciones.ExcepcionPorEdadIncorrectaNegativa()
+    
+    if edad < 65:
+        raise excepciones.ExcepcionPorEdadIncorrectaMenorAMinimina()
+    
+    if edad >= 115:
+        raise excepciones.ExcepcionPorEdadIncorrectaMayorAMaxima()
+    
+    if isinstance(edad, float):
+        raise excepciones.ExcepcionPorEdadIncorrectaDecimal()
+    
+    if not isinstance(edad, (int)):
+        raise excepciones.ExcepcionPorEdadIncorrectaNoNumerica()
+
+
 def calcular_porcentaje_financiado(edad):
     #Calcula el porcentaje a financiar del total de la vivienda en funcion de la edad del interesado
-    if edad < 0:
-        raise ValueError("La edad no puede ser negativa")
-    if edad < 65:
-        raise ValueError("La edad debe ser mayor o igual a 65 años")
+
+    verificar_edad(edad)
+
     if edad >= 65 and edad < 70:
         return 30
     if edad >= 70 and edad < 80:
@@ -16,11 +41,12 @@ def calcular_porcentaje_financiado(edad):
         return 55
     if edad >= 85 and edad <115:
         return 70
-    if edad >= 115:
-        raise ValueError("La edad debe ser menor a 115 años")
 
 def calcular_plazo_financiacion(edad):
     #Calcula el plazo en años en el que el banco pagara las cuotas al usuario funcion de la edad del interesado
+
+    verificar_edad(edad)
+    
     if edad >= 65 and edad <70:
         return 20 
     if edad >= 70 and edad <75:
