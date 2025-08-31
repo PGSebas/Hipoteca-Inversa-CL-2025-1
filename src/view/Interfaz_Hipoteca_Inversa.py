@@ -18,7 +18,7 @@ def main():
         intereses_totales, saldo_final = calculo.calcular_intereses(
             pago_mensual,
             calculo.TASA_EFECTIVA_MENSUAL,
-            plazo_anios * 12
+            plazo_anios
         )
 
         # Salidas

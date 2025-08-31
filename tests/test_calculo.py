@@ -3,6 +3,7 @@ sys.path.append("src")
 
 import unittest
 from model import calculo
+from model import excepciones
 
 class TestHipotecaInversa(unittest.TestCase):
     # =========================
@@ -10,7 +11,7 @@ class TestHipotecaInversa(unittest.TestCase):
     # =========================
     def test_caso_1_porcentaje(self):
         # Entrada
-        edad = 68.0
+        edad = 68
         # Cálculo
         resultado = calculo.calcular_porcentaje_financiado(edad)
         # Verificación
@@ -18,7 +19,7 @@ class TestHipotecaInversa(unittest.TestCase):
 
     def test_caso_1_plazo(self):
         # Entrada
-        edad = 68.0
+        edad = 68
         # Cálculo
         resultado = calculo.calcular_plazo_financiacion(edad)
         # Verificación
@@ -36,13 +37,13 @@ class TestHipotecaInversa(unittest.TestCase):
 
     def test_caso_1_intereses(self):
         # Entrada
-        edad = 68.0
+        edad = 68
         valor_vivienda = 500_000_000.0
         # Cálculo
         pf = calculo.calcular_porcentaje_financiado(edad)
         plazo = calculo.calcular_plazo_financiacion(edad)
         pago = calculo.calcular_pago_mensual(pf, valor_vivienda, plazo)
-        intereses, _ = calculo.calcular_intereses(pago, calculo.TASA_EFECTIVA_MENSUAL, plazo * 12)
+        intereses, _ = calculo.calcular_intereses(pago, calculo.TASA_EFECTIVA_MENSUAL, plazo)
         # Verificación
         self.assertAlmostEqual(intereses, 51708483.423720025, places=2)
 
@@ -51,7 +52,7 @@ class TestHipotecaInversa(unittest.TestCase):
     # =========================
     def test_caso_2_porcentaje(self):
         # Entrada
-        edad = 70.0
+        edad = 70
         # Cálculo
         resultado = calculo.calcular_porcentaje_financiado(edad)
         # Verificación
@@ -59,7 +60,7 @@ class TestHipotecaInversa(unittest.TestCase):
 
     def test_caso_2_plazo(self):
         # Entrada
-        edad = 70.0
+        edad = 70
         # Cálculo
         resultado = calculo.calcular_plazo_financiacion(edad)
         # Verificación
@@ -77,13 +78,13 @@ class TestHipotecaInversa(unittest.TestCase):
 
     def test_caso_2_intereses(self):
         # Entrada
-        edad = 70.0
+        edad = 70
         valor_vivienda = 400_000_000.0
         # Cálculo
         pf = calculo.calcular_porcentaje_financiado(edad)
         plazo = calculo.calcular_plazo_financiacion(edad)
         pago = calculo.calcular_pago_mensual(pf, valor_vivienda, plazo)
-        intereses, _ = calculo.calcular_intereses(pago, calculo.TASA_EFECTIVA_MENSUAL, plazo * 12)
+        intereses, _ = calculo.calcular_intereses(pago, calculo.TASA_EFECTIVA_MENSUAL, plazo)
         # Verificación
         self.assertAlmostEqual(intereses, 23716044.688623436, places=2)
 
@@ -92,7 +93,7 @@ class TestHipotecaInversa(unittest.TestCase):
     # =========================
     def test_caso_3_porcentaje(self):
         # Entrada
-        edad = 80.0
+        edad = 80
         # Cálculo
         resultado = calculo.calcular_porcentaje_financiado(edad)
         # Verificación
@@ -100,7 +101,7 @@ class TestHipotecaInversa(unittest.TestCase):
 
     def test_caso_3_plazo(self):
         # Entrada
-        edad = 80.0
+        edad = 80
         # Cálculo
         resultado = calculo.calcular_plazo_financiacion(edad)
         # Verificación
@@ -118,13 +119,13 @@ class TestHipotecaInversa(unittest.TestCase):
 
     def test_caso_3_intereses(self):
         # Entrada
-        edad = 80.0
+        edad = 80
         valor_vivienda = 200_000_000.0
         # Cálculo
         pf = calculo.calcular_porcentaje_financiado(edad)
         plazo = calculo.calcular_plazo_financiacion(edad)
         pago = calculo.calcular_pago_mensual(pf, valor_vivienda, plazo)
-        intereses, _ = calculo.calcular_intereses(pago, calculo.TASA_EFECTIVA_MENSUAL, plazo * 12)
+        intereses, _ = calculo.calcular_intereses(pago, calculo.TASA_EFECTIVA_MENSUAL, plazo)
         # Verificación
         self.assertAlmostEqual(intereses, 3712493.966080846, places=2)
 
@@ -133,7 +134,7 @@ class TestHipotecaInversa(unittest.TestCase):
     # =========================
     def test_caso_4_porcentaje(self):
         # Entrada
-        edad = 95.0
+        edad = 95
         # Cálculo
         resultado = calculo.calcular_porcentaje_financiado(edad)
         # Verificación
@@ -141,7 +142,7 @@ class TestHipotecaInversa(unittest.TestCase):
 
     def test_caso_4_plazo(self):
         # Entrada
-        edad = 95.0
+        edad = 95
         # Cálculo
         resultado = calculo.calcular_plazo_financiacion(edad)
         # Verificación
@@ -159,13 +160,13 @@ class TestHipotecaInversa(unittest.TestCase):
 
     def test_caso_4_intereses(self):
         # Entrada
-        edad = 95.0
+        edad = 95
         valor_vivienda = 10_000_000.0
         # Cálculo
         pf = calculo.calcular_porcentaje_financiado(edad)
         plazo = calculo.calcular_plazo_financiacion(edad)
         pago = calculo.calcular_pago_mensual(pf, valor_vivienda, plazo)
-        intereses, _ = calculo.calcular_intereses(pago, calculo.TASA_EFECTIVA_MENSUAL, plazo * 12)
+        intereses, _ = calculo.calcular_intereses(pago, calculo.TASA_EFECTIVA_MENSUAL, plazo)
         # Verificación
         self.assertAlmostEqual(intereses, 183328.1798740009, places=2)
 
@@ -174,7 +175,7 @@ class TestHipotecaInversa(unittest.TestCase):
     # =========================
     def test_caso_5_porcentaje(self):
         # Entrada
-        edad = 65.0
+        edad = 65
         # Cálculo
         resultado = calculo.calcular_porcentaje_financiado(edad)
         # Verificación
@@ -182,7 +183,7 @@ class TestHipotecaInversa(unittest.TestCase):
 
     def test_caso_5_plazo(self):
         # Entrada
-        edad = 65.0
+        edad = 65
         # Cálculo
         resultado = calculo.calcular_plazo_financiacion(edad)
         # Verificación
@@ -200,13 +201,13 @@ class TestHipotecaInversa(unittest.TestCase):
 
     def test_caso_5_intereses(self):
         # Entrada
-        edad = 65.0
+        edad = 65
         valor_vivienda = 2_000_000_000.0
         # Cálculo
         pf = calculo.calcular_porcentaje_financiado(edad)
         plazo = calculo.calcular_plazo_financiacion(edad)
         pago = calculo.calcular_pago_mensual(pf, valor_vivienda, plazo)
-        intereses, _ = calculo.calcular_intereses(pago, calculo.TASA_EFECTIVA_MENSUAL, plazo * 12)
+        intereses, _ = calculo.calcular_intereses(pago, calculo.TASA_EFECTIVA_MENSUAL, plazo)
         # Verificación
         self.assertAlmostEqual(intereses, 206833933.6948801, places=2)
 
@@ -218,15 +219,16 @@ class TestHipotecaInversa(unittest.TestCase):
         # Entrada
         edad = 62
         # Cálculo + Verificación
-        with self.assertRaises(ValueError):
+        with self.assertRaises(excepciones.ExcepcionPorEdadIncorrectaMenorAMinimina):
             _ = calculo.calcular_porcentaje_financiado(edad)
 
     def test_error_edad_negativa(self):
         # Entrada
         edad = -70
         # Cálculo + Verificación
-        with self.assertRaises(ValueError):
+        with self.assertRaises(excepciones.ExcepcionPorEdadIncorrectaNegativa):
             _ = calculo.calcular_porcentaje_financiado(edad)
+            
     def test_error_valor_vivienda_cero(self):
         # Entrada
         porcentaje_financiado = 55

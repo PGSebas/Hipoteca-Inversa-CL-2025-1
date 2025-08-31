@@ -1,7 +1,7 @@
 import sys 
 sys.path.append("src")
 
-import excepciones
+from model import excepciones
 
 #Constantes
 TASA_EFECTIVA_ANUAL = 0.2478 # Esta expresando en decimal (24.78 %)
@@ -12,20 +12,20 @@ def verificar_edad(edad: int):
     Arroja la excepcion correspondiente al tipo de error por edad
 
     """
-    if edad == 0:
-        raise excepciones.ExcepcionPorEdadIncorrectaNegativa()
+    if edad < 0:
+        raise excepciones.ExcepcionPorEdadIncorrectaNegativa(edad)
     
     if edad < 65:
-        raise excepciones.ExcepcionPorEdadIncorrectaMenorAMinimina()
+        raise excepciones.ExcepcionPorEdadIncorrectaMenorAMinimina(edad)
     
     if edad >= 115:
-        raise excepciones.ExcepcionPorEdadIncorrectaMayorAMaxima()
+        raise excepciones.ExcepcionPorEdadIncorrectaMayorAMaxima(edad)
     
     if isinstance(edad, float):
-        raise excepciones.ExcepcionPorEdadIncorrectaDecimal()
+        raise excepciones.ExcepcionPorEdadIncorrectaDecimal(edad)
     
     if not isinstance(edad, (int)):
-        raise excepciones.ExcepcionPorEdadIncorrectaNoNumerica()
+        raise excepciones.ExcepcionPorEdadIncorrectaNoNumerica(edad)
 
 
 def calcular_porcentaje_financiado(edad):
@@ -46,7 +46,7 @@ def calcular_plazo_financiacion(edad):
     #Calcula el plazo en años en el que el banco pagara las cuotas al usuario funcion de la edad del interesado
 
     verificar_edad(edad)
-    
+
     if edad >= 65 and edad <70:
         return 20 
     if edad >= 70 and edad <75:
@@ -66,6 +66,7 @@ def calcular_pago_mensual(porcentaje_financiado, valor_vivienda, plazo):
         raise ValueError("El valor de la vivienda no puede ser cero")
     if porcentaje_financiado <= 0:
         raise ValueError("El porcentaje financiado debe ser mayor que cero")
+    # Se multiplica el plazo por 12 para pasarlo a meses.
     return (valor_vivienda * porcentaje_financiado / 100) / (plazo * 12)
 
 def calcular_valor_financiado(porcentaje_financiado, valor_vivienda):
@@ -73,11 +74,12 @@ def calcular_valor_financiado(porcentaje_financiado, valor_vivienda):
     valor_financiado = (porcentaje_financiado/100) * valor_vivienda
     return valor_financiado
 
-def calcular_intereses(pago_mensual, tasa_mensual, numero_cuotas, saldo_inicial=0.0):
+def calcular_intereses(pago_mensual, tasa_mensual, plazo, saldo_inicial=0.0):
     #Calcula el interés total y el saldo final con dicho interes
     
     saldo = float(saldo_inicial)
-    for _ in range(numero_cuotas):
+    # Se multiplica el plazo por 12 para pasarlo a meses.
+    for _ in range(plazo * 12):
         interes_mes = saldo * tasa_mensual
         saldo += interes_mes + pago_mensual
 
