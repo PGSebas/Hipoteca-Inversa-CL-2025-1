@@ -1,5 +1,11 @@
 # Hipoteca-Inversa-CL-2025-2
 
+## Autores 
+
+- Juan Sebastian Pinilla Giraldo
+- Julián David Osorio Londoño
+
+## ¿Como Funciona? 
 Este programa permite calcular la cuota mensual que recibirá un adulto mayor (a partir de los 65 años) a través de una hipoteca inversa, de acuerdo con los plazos y porcentajes definidos por la entidad bancaria.
 Para realizar el calculo se considerará:
 - La edad del solicitante: Este determina el plazo de pago y el porcentaje de la vivienda que se usará como garantía.
@@ -60,11 +66,37 @@ Para ejecutar las pruebas unitarias, utilice el siguiente comando desde desde un
 python -m unittest discover -s tests -p "test_*.py"
 ```
 
+## Arquitectura Del Proyecto 
 
-## Autores  
+El proyecto esta desarrollado basandose en la arquitectura MVC (Modelo Vista Controlador) permitiendo separar el proyecto en carpetas utiles para su ejecución: 
 
-- Juan Sebastián Pinilla Giraldo  
-- Julián David Osorio Londoño  
+Carpeta .VSCODE 
+
+- Es una carpeta creada automáticamente por Visual Studio Code dentro del proyecto; Sirve para guardar configuraciones específicas del proyecto y del editor 
+
+Carpeta SRC
+
+Dentro de esta carpeta hay 3 Subcarpetas: 
+
+Controller: 
+- Contienen un archivo __init.py que permite que python reconozca la carpeta como un Módulo y pueda hacer import
+
+Model:
+
+- contiene un archivo __init.py que permite que python reconozca la carpeta como un Módulo y pueda hacer import
+
+- Contienen el archivo calculo.py, el cual es el encargado de realizar todos los cálculos y procesos principales, utiliza la libreria SYS que proporciona funciones y variables que interactúan directamente con el intérprete de Python 
+
+- Contiene el archivo excepciones.py, con este se definen excepciones para manejar distintos errores relacionados con la edad que ingresa un usuario. Esto permitirá controlar de manera específica los errores y mostrar mensajes claros.
+
+View:
+
+- Esta carpeta contiene el archivo Interfaz_Hipoteca_Inversa.py, esta genera la interfaz principal  que interactuará con el usuario y mostrará los resultados, utilizando las funciones de cálculo definidas en calculo.py
+
+Carpeta TESTS: 
+
+- Contiene el archivo test_calculo.py, el cual es un conjunto de pruebas automáticas para verificar que todas las funciones de calculo y las excepciones funcionen correctamente.
+
 
 
 
