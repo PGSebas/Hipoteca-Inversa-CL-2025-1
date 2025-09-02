@@ -1,4 +1,8 @@
-# Hipoteca-Inversa-CL-2025-2
+# Hipoteca-Inversa-CL-2025-1
+
+## Prerequisitos
+
+- Python 3.12. Puede instalarse desde [python.org](https://www.python.org/) o con `sudo apt install python3.12`.
 
 Este programa permite calcular la cuota mensual que recibirá un adulto mayor (a partir de los 65 años) a través de una hipoteca inversa, de acuerdo con los plazos y porcentajes definidos por la entidad bancaria.
 Para realizar el calculo se considerará:
@@ -42,7 +46,28 @@ $$
 $$
 
 
-## Autores  
+## Arquitectura del Proyecto
+
+- `src/model`: lógica de cálculo y excepciones.
+- `src/view`: interfaz de consola.
+- `src/controller`: coordinación entre modelo y vista.
+- `tests`: pruebas unitarias.
+
+## Ejecución de la Interfaz
+
+1. Abrir una consola.
+2. Navegar a la carpeta del proyecto (`cd Hipoteca-Inversa-CL-2025-1`).
+3. Ejecutar `python3 src/view/Interfaz_Hipoteca_Inversa.py`.
+
+## Ejecución de los Tests
+
+Desde la raíz del proyecto, ejecutar:
+
+```bash
+python3 -m unittest discover tests
+```
+
+## Autores
 
 - Juan Sebastián Pinilla Giraldo  
 - Julián David Osorio Londoño  
