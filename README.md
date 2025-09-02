@@ -41,6 +41,25 @@ $$
 \text{Cuota mensual} = \frac{\text{Valor del préstamo}}{\text{Número de meses del plazo}}
 $$
 
+ ## Verificar requisitos previos
+   - Asegurarse de tener Python 3 en adelante instalado
+     
+## Ejecución del Proyecto
+
+Para ejecutar la interfaz en consola, utilice el siguiente comando desde una terminal en la raíz del proyecto:
+
+```sh
+python src/view/console/Interfaz_Hipoteca_Inversa.py
+```
+
+## Ejecución de Pruebas
+
+Para ejecutar las pruebas unitarias, utilice el siguiente comando desde desde una terminal la raíz del proyecto:
+
+```sh
+python -m unittest discover -s tests -p "test_*.py"
+```
+
 
 ## Autores  
 
