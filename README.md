@@ -55,7 +55,7 @@ $$
 Para ejecutar la interfaz en consola, utilice el siguiente comando desde una terminal en la raíz del proyecto:
 
 ```sh
-python src/view/console/Interfaz_Hipoteca_Inversa.py
+python src/view/Interfaz_Hipoteca_Inversa.py
 ```
 
 ## Ejecución de Pruebas
