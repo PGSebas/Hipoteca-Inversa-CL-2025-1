@@ -8,7 +8,7 @@ def main():
 
     try:
         # Entradas
-        edad = float(input("Ingrese la edad: "))
+        edad = int(input("Ingrese la edad: "))
         valor_vivienda = float(input("Ingrese el valor de la vivienda: "))
 
         # Cálculos
