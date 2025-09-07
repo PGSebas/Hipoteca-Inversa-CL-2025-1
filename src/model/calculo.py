@@ -89,5 +89,5 @@ def calcular_intereses(pago_mensual, tasa_mensual, plazo, saldo_inicial=0.0):
 
 def verificar_valor_vivienda(valor_vivienda: float):
     if valor_vivienda < 50_000_000:
-        raise ExcepcionPorValorViviendaInvalido(valor_vivienda)
+        raise excepciones.ExcepcionPorValorViviendaInvalido(valor_vivienda)
     return True
