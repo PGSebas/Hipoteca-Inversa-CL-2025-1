@@ -1,7 +1,7 @@
 import sys 
 sys.path.append("src")
 
-from model import calculo
+from model import calculo, excepciones
 
 def main():
     print("=== Calculadora Hipoteca Inversa ===")
@@ -30,6 +30,17 @@ def main():
         print(f"Saldo Final: ${saldo_final:,.2f}")
 
     except ValueError as e:
+        print(f"Error: {e}")
+
+    except excepciones.ExcepcionPorEdadIncorrectaNegativa as e:
+        print(f"Error: {e}")
+    except excepciones.ExcepcionPorEdadIncorrectaMenorAMinimina as e:
+        print(f"Error: {e}")
+    except excepciones.ExcepcionPorEdadIncorrectaMayorAMaxima as e:
+        print(f"Error: {e}")
+    except excepciones.ExcepcionPorEdadIncorrectaDecimal as e:
+        print(f"Error: {e}")
+    except excepciones.ExcepcionPorEdadIncorrectaNoNumerica as e:
         print(f"Error: {e}")
 
 if __name__ == "__main__":
