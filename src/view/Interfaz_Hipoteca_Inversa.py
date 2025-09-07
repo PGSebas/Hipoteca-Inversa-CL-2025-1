@@ -42,6 +42,7 @@ def main():
         print(f"Error: {e}")
     except excepciones.ExcepcionPorEdadIncorrectaNoNumerica as e:
         print(f"Error: {e}")
-
+    except excepciones.ExcepcionPorValorViviendaInvalido as e:
+        print(f"Error: {e}")
 if __name__ == "__main__":
     main()
