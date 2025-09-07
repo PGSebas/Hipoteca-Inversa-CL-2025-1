@@ -30,6 +30,16 @@ class ExcepcionPorEdadIncorrectaDecimal( Exception ):
     def __init__(self, edad_ingresada_por_usuario : int):
         super().__init__( f"Edad ingresada inválida, esta no puede ser decimal y usted ingresó: {edad_ingresada_por_usuario}. Su edad debe ser un valor entero" )
 
+class ExcepcionPorValorViviendaInvalido(Exception):
+    """
+    Excepción personalizada para indicar que el valor de la vivienda no cumple los requisitos mínimos
+    """
+    def __init__(self, valor_ingresado: float):
+        super().__init__(
+            f"Valor de vivienda inválido: {valor_ingresado:,.0f} pesos. "
+            f"El valor debe ser mayor o igual a 50,000,000 pesos colombianos."
+        )
+
 class ExcepcionPorEdadIncorrectaNoNumerica( Exception ):
     """
     Excepción personalizada para indicar que el usuario ingresó una edad que no es numerica
