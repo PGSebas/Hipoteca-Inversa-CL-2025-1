@@ -101,36 +101,42 @@ Carpeta TESTS:
 
 ## Cómo ejecutar la aplicación gui
 
-Sigue estos pasos para ejecutar la Calculadora de Hipoteca Inversa:
-
-Clona el repositorio (si aún no lo has hecho):
-
+1. Clona el repositorio
 git clone https://github.com/Sepu2412/Hipoteca-Inversa-CL-2025-1
 
 
-Instala las dependencias necesarias:
+2. Instala las dependencias
 
-Asegúrate de tener instalado Python 3.8 o superior. Luego instala Kivy:
+Si tienes un archivo requirements.txt, simplemente ejecuta:
+
+pip install -r requirements.txt
+
+
+Si no tienes el archivo, puedes instalar Kivy manualmente:
 
 pip install kivy
 
+3. Estructura esperada del proyecto
 
-Nota: Si tu proyecto usa un entorno virtual, actívalo antes de instalar.
+Asegúrate de que el proyecto tenga una estructura como esta:
 
-Estructura esperada del proyecto:
-
-Asegúrate de que la carpeta src contenga los módulos necesarios:
-
+.
 ├── main.py
-└── src
-    ├── model
-    │   ├── calculo.py
-    │   └── excepciones.py
+├── src/
+│   └── model/
+│       ├── calculo.py
+│       └── excepciones.py
+└── tests/
+    └── test_*.py
+
+4. Ejecuta la aplicación
+
+Desde la raíz del proyecto, corre el siguiente comando:
+
+python main.py
 
 
-Ejecuta la aplicación:
-
-Desde la raíz del proyecto, ejecuta:
+Esto abrirá una ventana gráfica con un formulario para ingresar la edad y el valor de la vivienda, y podrás ver los resultados del cálculo al presionar el botón "Calcular".
 
 python main.py
 
