@@ -4,6 +4,8 @@
 
 - Juan Sebastian Pinilla Giraldo
 - Julián David Osorio Londoño
+## Interfaz-Grafica-realizada-por
+- Tomás Sepúlveda Giraldo
 
 ## ¿Como Funciona? 
 Este programa permite calcular la cuota mensual que recibirá un adulto mayor (a partir de los 65 años) a través de una hipoteca inversa, de acuerdo con los plazos y porcentajes definidos por la entidad bancaria.
