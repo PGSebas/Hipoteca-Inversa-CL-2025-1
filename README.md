@@ -99,6 +99,42 @@ Carpeta TESTS:
 
 - Contiene el archivo test_calculo.py, el cual es un conjunto de pruebas automáticas para verificar que todas las funciones de calculo y las excepciones funcionen correctamente.
 
+## Cómo ejecutar la aplicación gui
 
+Sigue estos pasos para ejecutar la Calculadora de Hipoteca Inversa:
+
+Clona el repositorio (si aún no lo has hecho):
+
+git clone https://github.com/Sepu2412/Hipoteca-Inversa-CL-2025-1
+
+
+Instala las dependencias necesarias:
+
+Asegúrate de tener instalado Python 3.8 o superior. Luego instala Kivy:
+
+pip install kivy
+
+
+Nota: Si tu proyecto usa un entorno virtual, actívalo antes de instalar.
+
+Estructura esperada del proyecto:
+
+Asegúrate de que la carpeta src contenga los módulos necesarios:
+
+├── main.py
+└── src
+    ├── model
+    │   ├── calculo.py
+    │   └── excepciones.py
+
+
+Ejecuta la aplicación:
+
+Desde la raíz del proyecto, ejecuta:
+
+python main.py
+
+
+Se abrirá una ventana gráfica con el formulario para ingresar la edad y el valor de la vivienda, y podrás ver los resultados del cálculo al presionar el botón "Calcular".
 
 
