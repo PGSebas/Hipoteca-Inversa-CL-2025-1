@@ -149,4 +149,4 @@ class CalculadoraHipotecaInversa(App):
 if __name__ == "__main__":
     CalculadoraHipotecaInversa().run()
 
-#lolllll
+
