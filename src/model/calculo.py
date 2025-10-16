@@ -1,7 +1,7 @@
 import sys 
 sys.path.append("src")
 
-from model import excepciones
+from src.model import excepciones
 
 #Constantes
 TASA_EFECTIVA_ANUAL = 0.2478 # Esta expresando en decimal (24.78 %)
