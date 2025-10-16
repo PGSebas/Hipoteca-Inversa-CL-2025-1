@@ -29,3 +29,6 @@ Desktop.ini
 .pytest_cache/
 .coverage
 htmlcov/
+
+#Informacion sensible
+secret_config.py

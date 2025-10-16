@@ -1,44 +1,59 @@
 import sys
 sys.path.append("src")
+sys.path.append( "." )
 
 from model.solicitante import solicitante
 import psycopg2
-
+import secret_config
 
 class controlador_solicitante:
-    def Insertar(solicitante: solicitante):
-        """Inserta una instancia de la clase solicitante en la tabla solicitante"""
-        
-        conexion = psycopg2.connect(
-            database="hipoteca_inversa",
-            user="administrador",
-            password="cY4Xt4NkCkvTiDmkKirF1BHohFExcqF9",
-            host="pg-d3ir973e5dus739bs8ig-a.virginia-postgres.render.com",
-            port=5432
-        )
-        
-        cursor = conexion.cursor()
+
+    def crear_tabla():
+        cursor = controlador_solicitante.obtener_cursor()
+        with open("sql/crear_tabla_solicitantes.sql", "r", encoding="utf-8") as archivo_sql:
+            sql = archivo_sql.read()
+            cursor.execute(sql)
+            cursor.connection.commit()
+    
+    def borrar_datos_tabla():
+        cursor = controlador_solicitante.obtener_cursor()
+        sql = "DELETE FROM solicitantes;"
+        cursor.execute(sql)
+        cursor.connection.commit()
+
+    def insertar(solicitante: solicitante):
+        cursor = controlador_solicitante.obtener_cursor()
 
         sql = """
-        INSERT INTO solicitante (
-            nombre_solicitante, 
-            identificacion_solicitante, 
-            fecha_nacimiento_solicitante, 
-            edad_solicitante
+        INSERT INTO solicitantes (
+            nombre, 
+            identificacion, 
+            fecha_nacimiento, 
+            edad
         ) VALUES (%s, %s, %s, %s);
         """
 
         valores = (
-            solicitante.nombre_solicitante,
-            1012345678,
-            '1980-02-10',
-            45
+            solicitante.nombre,
+            solicitante.identificacion,
+            solicitante.fecha_nacimiento,
+            solicitante.edad
         )
 
         cursor.execute(sql, valores)
-        conexion.commit()
-        cursor.close()
-        conexion.close()
+        cursor.connection.commit()
 
-    def Buscar(nombre_solicitante: str) -> solicitante:
-        pass
+    def buscar_por_cedula(identificacion_solicitante: str) -> solicitante:
+        cursor = controlador_solicitante.obtener_cursor()
+        cursor.execute(f"""select nombre, identificacion, fecha_nacimiento, edad
+        from solicitantes where identificacion = '{identificacion_solicitante}'""" )
+        fila = cursor.fetchone()
+        resultado = solicitante(nombre=fila[0], identificacion=fila[1], fecha_nacimiento=fila[2], edad=fila[3])
+        return resultado
+
+    def obtener_cursor():
+        """ Crea la conexion a la base de datos y retorna un cursor para hacer consultas """
+        connection = psycopg2.connect(database=secret_config.PGDATABASE, user=secret_config.PGUSER, password=secret_config.PGPASSWORD, host=secret_config.PGHOST, port=secret_config.PGPORT)
+        # Todas las instrucciones se ejecutan a tavés de un cursor
+        cursor = connection.cursor()
+        return cursor
