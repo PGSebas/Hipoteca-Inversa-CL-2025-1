@@ -22,28 +22,17 @@ class controlador_solicitante:
         cursor.connection.commit()
 
     def insertar(solicitante: solicitante):
+        """ Recibe un a instancia de la clase Solicitante y la inserta en la tabla respectiva"""
         cursor = controlador_solicitante.obtener_cursor()
+        consulta = f"""insert into solicitantes (nombre, identificacion, fecha_nacimiento, edad)
+        values ('{solicitante.nombre}', '{solicitante.identificacion}', '{solicitante.fecha_nacimiento}', {solicitante.edad})"""
 
-        sql = """
-        INSERT INTO solicitantes (
-            nombre, 
-            identificacion, 
-            fecha_nacimiento, 
-            edad
-        ) VALUES (%s, %s, %s, %s);
-        """
-
-        valores = (
-            solicitante.nombre,
-            solicitante.identificacion,
-            solicitante.fecha_nacimiento,
-            solicitante.edad
-        )
-
-        cursor.execute(sql, valores)
+        cursor.execute(consulta)
         cursor.connection.commit()
 
     def buscar_por_cedula(identificacion_solicitante: str) -> solicitante:
+        """ Retorna una instancia de la clase Solicitante con los datos obtenidos de la base de datos
+            a partir de la cedula suministrada como parametro """
         cursor = controlador_solicitante.obtener_cursor()
         cursor.execute(f"""select nombre, identificacion, fecha_nacimiento, edad
         from solicitantes where identificacion = '{identificacion_solicitante}'""" )
