@@ -4,6 +4,8 @@
 
 - Juan Sebastian Pinilla Giraldo
 - Julián David Osorio Londoño
+## Interfaz-Grafica-realizada-por
+- Tomás Sepúlveda Giraldo.
 
 ## ¿Como Funciona? 
 Este programa permite calcular la cuota mensual que recibirá un adulto mayor (a partir de los 65 años) a través de una hipoteca inversa, de acuerdo con los plazos y porcentajes definidos por la entidad bancaria.
@@ -97,6 +99,48 @@ Carpeta TESTS:
 
 - Contiene el archivo test_calculo.py, el cual es un conjunto de pruebas automáticas para verificar que todas las funciones de calculo y las excepciones funcionen correctamente.
 
+## Cómo ejecutar la aplicación gui
 
+1. Clona el repositorio
+git clone https://github.com/Sepu2412/Hipoteca-Inversa-CL-2025-1
+
+
+2. Instala las dependencias
+
+Si tienes un archivo requirements.txt, simplemente ejecuta:
+
+pip install -r requirements.txt
+
+
+Si no tienes el archivo, puedes instalar Kivy manualmente:
+
+pip install kivy
+
+3. Estructura esperada del proyecto
+
+Asegúrate de que el proyecto tenga una estructura como esta:
+
+.
+├── main.py
+├── src/
+│   └── model/
+│       ├── calculo.py
+│       └── excepciones.py
+└── tests/
+    └── test_*.py
+
+4. Ejecuta la aplicación
+
+Desde la raíz del proyecto, corre el siguiente comando:
+
+python main.py
+
+
+Esto abrirá una ventana gráfica con un formulario para ingresar la edad y el valor de la vivienda, y podrás ver los resultados del cálculo al presionar el botón "Calcular".
+
+python main.py
+
+
+Se abrirá una ventana gráfica con el formulario para ingresar la edad y el valor de la vivienda, y podrás ver los resultados del cálculo al presionar el botón "Calcular".
 
 
