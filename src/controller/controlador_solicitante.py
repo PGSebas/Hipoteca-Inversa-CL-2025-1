@@ -61,7 +61,11 @@ class ControladorSolicitante:
 
     def obtener_cursor():
         """ Crea la conexion a la base de datos y retorna un cursor para hacer consultas """
-        connection = psycopg2.connect(database=secret_config.PGDATABASE, user=secret_config.PGUSER, password=secret_config.PGPASSWORD, host=secret_config.PGHOST, port=secret_config.PGPORT)
+        connection = psycopg2.connect(database=secret_config.PGDATABASE, 
+                                      user=secret_config.PGUSER, 
+                                      password=secret_config.PGPASSWORD, 
+                                      host=secret_config.PGHOST, 
+                                      port=secret_config.PGPORT)
         # Todas las instrucciones se ejecutan a tavés de un cursor
         cursor = connection.cursor()
         return cursor
