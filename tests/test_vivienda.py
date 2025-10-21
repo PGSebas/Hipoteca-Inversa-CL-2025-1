@@ -9,9 +9,8 @@ from model.solicitante import Solicitante
 from controller.controlador_solicitante import ControladorSolicitante
 
 class testDBvivienda (unittest.TestCase):
+    
     # Test fixtures
-
-
     def setUpClass():
         """test fixtures: se ejecuta una vez al inicio de la prueba"""
         # Eliminar y crear tablas en el orden correcto (solicitantes primero por FK)
