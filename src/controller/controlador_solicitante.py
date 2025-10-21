@@ -2,7 +2,7 @@ import sys
 sys.path.append("src")
 sys.path.append( "." )
 
-from model.solicitante import solicitante
+from model.solicitante import Solicitante
 import psycopg2
 import secret_config
 
@@ -27,14 +27,14 @@ class ControladorSolicitante:
         cursor.execute(sql)
         cursor.connection.commit()
 
-    def insertar(solicitante: solicitante):
+    def insertar(solicitante: Solicitante):
         """ Recibe un a instancia de la clase Solicitante y la inserta en la tabla respectiva"""
         cursor = ControladorSolicitante.obtener_cursor()
         consulta = "INSERT INTO solicitantes (nombre, identificacion, fecha_nacimiento, edad) VALUES (%s, %s, %s, %s)"
         cursor.execute(consulta, (solicitante.nombre, solicitante.identificacion, solicitante.fecha_nacimiento, solicitante.edad))
         cursor.connection.commit()
 
-    def buscar_por_cedula(identificacion_solicitante: str) -> solicitante:
+    def buscar_por_cedula(identificacion_solicitante: str) -> Solicitante:
         """ Retorna una instancia de la clase Solicitante con los datos obtenidos de la base de datos
             a partir de la cedula suministrada como parametro """
         cursor = ControladorSolicitante.obtener_cursor()
@@ -45,10 +45,10 @@ class ControladorSolicitante:
         if fila is None:
             return None
 
-        resultado = solicitante(nombre=fila[0], identificacion=fila[1], fecha_nacimiento=fila[2], edad=fila[3])
+        resultado = Solicitante(nombre=fila[0], identificacion=fila[1], fecha_nacimiento=fila[2], edad=fila[3])
         return resultado
 
-    def modificar_datos(solicitante: solicitante):
+    def modificar_datos(solicitante: Solicitante):
         """Actualiza los datos de un solicitante existente identificado por su cedula."""
         cursor = ControladorSolicitante.obtener_cursor()
         consulta = "UPDATE solicitantes SET nombre = %s, fecha_nacimiento = %s, edad = %s WHERE identificacion = %s"
