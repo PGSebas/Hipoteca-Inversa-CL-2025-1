@@ -1,12 +1,15 @@
+import datetime
+
+
 class solicitante  :
-    def __init__(self,nombre,
-        identificacion,
-        fecha_nacimiento,
-        edad):
-        self.nombre = nombre
-        self.identificacion = identificacion
-        self.fecha_nacimiento = fecha_nacimiento
-        self.edad = edad
+    def __init__(self,nombre: str,
+        identificacion: str,
+        fecha_nacimiento: datetime.date,
+        edad: int):
+        self.nombre: str = nombre
+        self.identificacion: str = identificacion
+        self.fecha_nacimiento: datetime.date = fecha_nacimiento
+        self.edad: int = edad
 
     def is_equal(self, otra: "solicitante") -> bool:
         """Compara si dos instancias de la clase solicitante son iguales."""
