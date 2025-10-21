@@ -15,6 +15,12 @@ class controlador_solicitante:
             cursor.execute(sql)
             cursor.connection.commit()
     
+    def eliminar_tabla():
+        cursor = controlador_solicitante.obtener_cursor()
+        sql = "DROP TABLE IF EXISTS solicitantes;"
+        cursor.execute(sql)
+        cursor.connection.commit()
+    
     def borrar_datos_tabla():
         cursor = controlador_solicitante.obtener_cursor()
         sql = "DELETE FROM solicitantes;"
