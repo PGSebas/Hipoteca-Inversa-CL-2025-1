@@ -30,10 +30,8 @@ class controlador_solicitante:
     def insertar(solicitante: solicitante):
         """ Recibe un a instancia de la clase Solicitante y la inserta en la tabla respectiva"""
         cursor = controlador_solicitante.obtener_cursor()
-        consulta = f"""insert into solicitantes (nombre, identificacion, fecha_nacimiento, edad)
-        values ('{solicitante.nombre}', '{solicitante.identificacion}', '{solicitante.fecha_nacimiento}', {solicitante.edad})"""
-
-        cursor.execute(consulta)
+        consulta = "INSERT INTO solicitantes (nombre, identificacion, fecha_nacimiento, edad) VALUES (%s, %s, %s, %s)"
+        cursor.execute(consulta, (solicitante.nombre, solicitante.identificacion, solicitante.fecha_nacimiento, solicitante.edad))
         cursor.connection.commit()
 
     def buscar_por_cedula(identificacion_solicitante: str) -> solicitante:
@@ -43,6 +41,10 @@ class controlador_solicitante:
         cursor.execute(f"""select nombre, identificacion, fecha_nacimiento, edad
         from solicitantes where identificacion = '{identificacion_solicitante}'""" )
         fila = cursor.fetchone()
+        # Si no se encuentra ninguna fila, retornar None en vez de intentar indexar None
+        if fila is None:
+            return None
+
         resultado = solicitante(nombre=fila[0], identificacion=fila[1], fecha_nacimiento=fila[2], edad=fila[3])
         return resultado
 
@@ -51,6 +53,10 @@ class controlador_solicitante:
         cursor = controlador_solicitante.obtener_cursor()
         consulta = "UPDATE solicitantes SET nombre = %s, fecha_nacimiento = %s, edad = %s WHERE identificacion = %s"
         cursor.execute(consulta, (solicitante.nombre, solicitante.fecha_nacimiento, solicitante.edad, solicitante.identificacion))
+        # Si no se actualizó ninguna fila, indicar que el solicitante no existe
+        if cursor.rowcount == 0:
+            cursor.connection.rollback()
+            raise ValueError(f"No existe solicitante con identificacion {solicitante.identificacion}")
         cursor.connection.commit()
 
     def obtener_cursor():
