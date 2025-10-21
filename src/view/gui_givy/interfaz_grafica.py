@@ -7,7 +7,7 @@ from kivy.uix.popup import Popup
 
 import sys
 sys.path.append("src")
-from src.model import calculo, excepciones
+from model import calculo, excepciones
 
 
 class CalculadoraHipotecaInversa(App):
