@@ -7,7 +7,6 @@ from model.solicitante import Solicitante
 from controller.controlador_solicitante import ControladorSolicitante
 from model.vivienda import Vivienda
 from controller.controlador_vivienda import ControladorVivienda
-import traceback
 
 # Reglas mínimas
 MIN_VALOR_VIVIENDA = 50_000_000
