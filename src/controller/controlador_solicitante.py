@@ -6,30 +6,30 @@ from model.solicitante import solicitante
 import psycopg2
 import secret_config
 
-class controlador_solicitante:
+class ControladorSolicitante:
 
     def crear_tabla():
-        cursor = controlador_solicitante.obtener_cursor()
+        cursor = ControladorSolicitante.obtener_cursor()
         with open("sql/crear_tabla_solicitantes.sql", "r", encoding="utf-8") as archivo_sql:
             sql = archivo_sql.read()
             cursor.execute(sql)
             cursor.connection.commit()
     
     def eliminar_tabla():
-        cursor = controlador_solicitante.obtener_cursor()
+        cursor = ControladorSolicitante.obtener_cursor()
         sql = "DROP TABLE IF EXISTS solicitantes;"
         cursor.execute(sql)
         cursor.connection.commit()
     
     def borrar_datos_tabla():
-        cursor = controlador_solicitante.obtener_cursor()
+        cursor = ControladorSolicitante.obtener_cursor()
         sql = "DELETE FROM solicitantes;"
         cursor.execute(sql)
         cursor.connection.commit()
 
     def insertar(solicitante: solicitante):
         """ Recibe un a instancia de la clase Solicitante y la inserta en la tabla respectiva"""
-        cursor = controlador_solicitante.obtener_cursor()
+        cursor = ControladorSolicitante.obtener_cursor()
         consulta = "INSERT INTO solicitantes (nombre, identificacion, fecha_nacimiento, edad) VALUES (%s, %s, %s, %s)"
         cursor.execute(consulta, (solicitante.nombre, solicitante.identificacion, solicitante.fecha_nacimiento, solicitante.edad))
         cursor.connection.commit()
@@ -37,7 +37,7 @@ class controlador_solicitante:
     def buscar_por_cedula(identificacion_solicitante: str) -> solicitante:
         """ Retorna una instancia de la clase Solicitante con los datos obtenidos de la base de datos
             a partir de la cedula suministrada como parametro """
-        cursor = controlador_solicitante.obtener_cursor()
+        cursor = ControladorSolicitante.obtener_cursor()
         cursor.execute(f"""select nombre, identificacion, fecha_nacimiento, edad
         from solicitantes where identificacion = '{identificacion_solicitante}'""" )
         fila = cursor.fetchone()
@@ -50,7 +50,7 @@ class controlador_solicitante:
 
     def modificar_datos(solicitante: solicitante):
         """Actualiza los datos de un solicitante existente identificado por su cedula."""
-        cursor = controlador_solicitante.obtener_cursor()
+        cursor = ControladorSolicitante.obtener_cursor()
         consulta = "UPDATE solicitantes SET nombre = %s, fecha_nacimiento = %s, edad = %s WHERE identificacion = %s"
         cursor.execute(consulta, (solicitante.nombre, solicitante.fecha_nacimiento, solicitante.edad, solicitante.identificacion))
         # Si no se actualizó ninguna fila, indicar que el solicitante no existe
