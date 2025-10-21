@@ -40,6 +40,13 @@ class controlador_solicitante:
         resultado = solicitante(nombre=fila[0], identificacion=fila[1], fecha_nacimiento=fila[2], edad=fila[3])
         return resultado
 
+    def actualizar(solicitante: solicitante):
+        """Actualiza los datos de un solicitante existente identificado por su cedula."""
+        cursor = controlador_solicitante.obtener_cursor()
+        consulta = "UPDATE solicitantes SET nombre = %s, fecha_nacimiento = %s, edad = %s WHERE identificacion = %s"
+        cursor.execute(consulta, (solicitante.nombre, solicitante.fecha_nacimiento, solicitante.edad, solicitante.identificacion))
+        cursor.connection.commit()
+
     def obtener_cursor():
         """ Crea la conexion a la base de datos y retorna un cursor para hacer consultas """
         connection = psycopg2.connect(database=secret_config.PGDATABASE, user=secret_config.PGUSER, password=secret_config.PGPASSWORD, host=secret_config.PGHOST, port=secret_config.PGPORT)
