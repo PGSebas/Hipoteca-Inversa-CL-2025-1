@@ -17,6 +17,12 @@ class ControladorSolicitante:
     
     def eliminar_tabla():
         cursor = ControladorSolicitante.obtener_cursor()
+        # Si existe la tabla viviendas, eliminarla primero para evitar dependencias (FK)
+        try:
+            cursor.execute("DROP TABLE IF EXISTS viviendas;")
+        except Exception:
+            # Si no existe o falla, continuar
+            pass
         sql = "DROP TABLE IF EXISTS solicitantes;"
         cursor.execute(sql)
         cursor.connection.commit()

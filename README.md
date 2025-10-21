@@ -68,6 +68,53 @@ Para ejecutar las pruebas unitarias, utilice el siguiente comando desde desde un
 python -m unittest discover -s tests -p "test_*.py"
 ```
 
+## Configuración de la base de datos (PostgreSQL)
+
+Este proyecto utiliza PostgreSQL para las tablas `solicitantes` y `viviendas`.
+
+1) Instale la dependencia de Python para PostgreSQL si aún no lo ha hecho:
+
+```powershell
+pip install psycopg2
+```
+
+2) Configure las credenciales de conexión:
+Asegurese de tener una base de datos PostgreSQL y sus respectivos datos de acceso
+
+- Copie `secret_config_sample.py` a `secret_config.py`:
+
+```powershell
+copy secret_config_sample.py secret_config.py
+```
+
+- Abra `secret_config.py` y complete las variables con los datos de su servidor PostgreSQL:
+
+```python
+PGHOST = 'mi_host_de_bd'
+PGDATABASE = 'mi_base_de_datos'
+PGUSER = 'mi_usuario'
+PGPASSWORD = 'mi_contraseña_segura'
+PGPORT = 5432
+```
+
+3) Crear las tablas en la base de datos (opciones):
+
+- Opción rápida (desde la raíz del repo):
+
+```powershell
+python sql\create_tables.py
+```
+
+- Opción manual: ejecute los scripts SQL en la carpeta `sql/` en su cliente psql o herramienta preferida. Asegúrese de crear `solicitantes` antes que `viviendas` (por la FK).
+
+4) Ejecutar la interfaz en consola:
+
+```powershell
+python src\view\gui_sql_consola\interfaz_sql.py
+```
+
+Nota de seguridad: No incluya credenciales reales en el repositorio. Use `secret_config.py` en su entorno local y añada este archivo a `.gitignore` si contiene secretos.
+
 ## Arquitectura Del Proyecto 
 
 El proyecto esta desarrollado basandose en la arquitectura MVC (Modelo Vista Controlador) permitiendo separar el proyecto en carpetas utiles para su ejecución: 
