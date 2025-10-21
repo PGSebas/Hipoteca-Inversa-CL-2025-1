@@ -137,6 +137,10 @@ class testDBsolicitante (unittest.TestCase):
         
         with self.assertRaises(Exception):
             ControladorSolicitante.modificar_datos(solicitante_prueba)
+    
+    def tearDownClass():
+        """test fixtures: se ejecuta una vez al final de la prueba"""
+        ControladorSolicitante.eliminar_tabla()
 
 if __name__ == '__main__':
     unittest.main()
