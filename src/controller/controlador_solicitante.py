@@ -40,7 +40,7 @@ class controlador_solicitante:
         resultado = solicitante(nombre=fila[0], identificacion=fila[1], fecha_nacimiento=fila[2], edad=fila[3])
         return resultado
 
-    def modificar(solicitante: solicitante):
+    def modificar_datos(solicitante: solicitante):
         """Actualiza los datos de un solicitante existente identificado por su cedula."""
         cursor = controlador_solicitante.obtener_cursor()
         consulta = "UPDATE solicitantes SET nombre = %s, fecha_nacimiento = %s, edad = %s WHERE identificacion = %s"
