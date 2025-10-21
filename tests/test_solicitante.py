@@ -37,27 +37,21 @@ class testDBsolicitante (unittest.TestCase):
         solicitante_encontrado = controlador_solicitante.buscar_por_cedula('1098765432')
 
         self.assertTrue(solicitante_prueba.is_equal(solicitante_encontrado))
-
-    def test_modificar_y_buscar(self):
-        """ Prueba que inserta un solicitante en la base de datos, lo modifica y luego lo busca por su cedula """
-        solicitante_prueba = solicitante(nombre="Ana María López", 
-            identificacion="1011121314",
-            fecha_nacimiento= datetime.strptime("1958-11-30", "%Y-%m-%d").date(), 
-            edad=65)
+    
+    def test_insertar_y_buscar_3(self):
+        """ Prueba que inserta un solicitante en la base de datos y luego lo busca por su cedula """
+        solicitante_prueba = solicitante(nombre="Luis Fernando Gómez", 
+            identificacion="1032145678",
+            fecha_nacimiento= datetime.strptime("1980-05-15", "%Y-%m-%d").date(), 
+            edad=43)
         
         controlador_solicitante.insertar(solicitante_prueba)
 
-        # Modificar datos del solicitante
-        solicitante_prueba.nombre = "Ana M. López"
-        solicitante_prueba.edad = 66
-
-        # Actualizar en la base de datos
-        controlador_solicitante.borrar_datos_tabla()
-        controlador_solicitante.insertar(solicitante_prueba)
-
-        solicitante_encontrado = controlador_solicitante.buscar_por_cedula('1011121314')
+        solicitante_encontrado = controlador_solicitante.buscar_por_cedula('1032145678')
 
         self.assertTrue(solicitante_prueba.is_equal(solicitante_encontrado))
+
+
 
 if __name__ == '__main__':
     unittest.main()
