@@ -1,5 +1,8 @@
+from src.controller.controlador_solicitante import ControladorSolicitante
 from flask import Flask, request, render_template
 import sys
+
+from model.solicitante import Solicitante
 
 sys.path.append("src")
 from model import excepciones
@@ -11,9 +14,35 @@ from model.calculo import (
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    return render_template("formulario.html")
+@app.route('/')      
+def hello():
+    return render_template("index.html")
+
+@app.route('/guardar_solicitante')
+def guardar_solicitante():
+    
+    # Crear un solicitante
+    solicitante = Solicitante(nombre="", identificacion="", fecha_nacimiento="", edad=0)
+    solicitante.nombre = request.args["nombre"]
+    solicitante.identificacion = request.args["identificacion"]
+    solicitante.fecha_nacimiento = request.args["fecha_nacimiento"]
+    solicitante.edad = request.args["edad"]
+    
+    # Guardarlo en la BD
+    ControladorSolicitante.insertar(solicitante)
+
+    return "Solicitante insertado exitosamente"
+
+@app.route('/crear_tablas')
+def crear_tablas():
+    ControladorSolicitante.crear_tabla()
+    return "Tablas creadas exitosamente"
+
+@app.route("/buscar_solicitante")
+def buscar_solicitante():
+    solicitante_encontrado = ControladorSolicitante.buscar_por_cedula(request.args["identificacion_buscada"])
+    return render_template("solitante_buscado.html", solicitante=solicitante_encontrado)
+
 
 @app.route("/calcular_hipoteca")
 def calcular_hipoteca():
