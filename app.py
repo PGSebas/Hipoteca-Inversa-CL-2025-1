@@ -62,6 +62,14 @@ def calcular_hipoteca():
             f"<b>Valor mensual recibido: ${pago_mensual:,.0f}</b>"
         )
 
+@app.route('/crear_solicitante')
+def crear_solicitante():
+    return render_template("crear_solicitante.html")
+
+@app.route('/calculo')
+def calculo():
+    return render_template("calculo.html")
+
    
 if __name__ == "__main__":
     app.run(debug=True)
